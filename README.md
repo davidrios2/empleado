@@ -37,6 +37,19 @@ mvn spring-boot:run
 
 6. **Properties**: The used properties were only needed for the database and spring.mvc.pathmatch.matching-strategy is defied, but I did not use it in the end.
 
+7. **Evidences**:
+
+![img_1.png](img_1.png)
+
+![img.png](img.png)
+
+![img_2.png](img_2.png)
+
+![img_3.png](img_3.png)
+
+![img_4.png](img_4.png)
+
+
 ## Acknowledgments
 
 - [Spring Boot](https://spring.io/projects/spring-boot)

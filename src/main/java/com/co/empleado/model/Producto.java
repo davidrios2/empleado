@@ -1,5 +1,7 @@
 package com.co.empleado.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,5 +29,6 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "idAlmacen")
+    @JsonBackReference// Para evitar ciclos infinitos en la respuesta
     private Almacen almacen;
 }

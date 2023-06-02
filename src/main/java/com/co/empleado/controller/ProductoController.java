@@ -23,10 +23,10 @@ public class ProductoController {
         return producto.getId(); //Cada que guarde un dato retorna el id
     }
 
-    @GetMapping("/listAll") //mostrar todas las personas
+    @GetMapping("/listAll") //mostrar todos los productos
     public Iterable<Producto> listAllProducts(){return productoService.list();}
 
-    @GetMapping("/list/{id}") //mostrar una persona
+    @GetMapping("/list/{id}") //mostrar un producto
     public Producto listProductById(@PathVariable("id") int id){ //La busqueda por id se hace por parámetro
         Optional<Producto> producto = productoService.listId(id);
         if(producto.isPresent()){

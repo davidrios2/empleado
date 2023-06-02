@@ -1,5 +1,6 @@
 package com.co.empleado.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,5 +24,6 @@ public class Almacen {
     private @NonNull String nombre; //Not null = obligatorio
 
     @OneToMany(mappedBy = "almacen", cascade = CascadeType.ALL)
+    @JsonManagedReference // Para evitar ciclos infinitos en la respuesta
     private List<Producto> productos;
 }

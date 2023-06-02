@@ -8,6 +8,7 @@ import com.co.empleado.model.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,15 +38,18 @@ public class AlmacenService {
         return dao.findById(id);
     }
 
+    public Almacen getAlmacenById(long id) {
+        return dao.findById(id)
+                .orElseThrow(() -> new ModelNotFound("Almacen no encontrado: " + id));
+    }
+
     public List<Producto> getProductosByAlmacenId(Long almacenId) {
-
         Optional<Almacen> optionalAlmacen = dao.findById(almacenId);
-        if (optionalAlmacen.isEmpty()) {
-            throw new ModelNotFound("Almacen no encontrado " + almacenId);
+        if (optionalAlmacen.isPresent()) {
+            Almacen almacen = optionalAlmacen.get();
+            return almacen.getProductos();
         }
-
-        Almacen almacen = optionalAlmacen.get();
-        return almacen.getProductos();
+        return Collections.emptyList();
     }
 
     //Añadir cualquier otra operación necesaria en definida en el dao
